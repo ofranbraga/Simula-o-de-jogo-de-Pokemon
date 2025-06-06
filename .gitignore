@@ -1,6 +1,3 @@
-# Arquivos de objeto compilados
 *.o
-
-# Executável compilado
 *.exe
 pokemon_simulation.exe
