@@ -20,7 +20,8 @@ struct Ataque {
 class Pokemon {
 private:
     std::string nome;
-    std::string tipo_pokemon; // Tipo do Pokémon
+    std::string tipo_pokemon1; // Tipo primário do Pokémon
+    std::string tipo_pokemon2; // Tipo secundário do Pokémon (pode ser vazio)
     int hp_max;
     int hp_atual;
     int ataque_stat; // Atributo de ataque do Pokémon
@@ -28,12 +29,13 @@ private:
     std::vector<Ataque> ataques;
 
 public:
-    Pokemon(std::string nome, std::string tipo_pokemon, int hp, int ataque_stat, int defesa_stat, std::vector<Ataque> ataques_iniciais);
+    Pokemon(std::string nome, std::string tipo1, std::string tipo2, int hp, int ataque_stat, int defesa_stat, std::vector<Ataque> ataques_iniciais);
 
     std::string getNome() const;
     int getHPAtual() const;
     int getHPMax() const;
-    std::string getTipoPokemon() const;
+    std::string getTipoPokemon1() const;
+    std::string getTipoPokemon2() const;
     bool estaVivo() const;
     const std::vector<Ataque>& getAtaques() const; // Para o oponente escolher um ataque
 
@@ -42,7 +44,9 @@ public:
     bool usarAtaque(int indice_ataque, Pokemon &alvo);
     void receberDano(int dano);
     void mostrarStatus() const;
-    void restaurarPP(); // Restaura PP de todos os ataques (ex: após batalha ou item)
+    void restaurarPP(); // Restaura PP de todos os ataques para o máximo
+    void curar(int quantidade);
+    void restaurarPPUmAtaque(int indice_ataque, int quantidade);
 };
 
 #endif
